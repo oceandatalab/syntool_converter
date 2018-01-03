@@ -1,0 +1,443 @@
+#!/usr/bin/env python
+# coding=utf-8
+
+"""
+Copyright (C) 2014-2018 OceanDataLab
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as
+published by the Free Software Foundation, either version 3 of the
+License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+"""
+
+import logging
+import argparse
+from datetime import datetime
+import os
+import sys
+import shlex
+
+
+logger = logging.getLogger()
+
+handler = logging.StreamHandler(stream=sys.stdout)
+handler.setLevel(logging.DEBUG)
+logger.addHandler(handler)
+
+error_handler = logging.StreamHandler(stream=sys.stderr)
+error_handler.setLevel(logging.ERROR)
+logger.addHandler(error_handler)
+
+logger.setLevel(logging.DEBUG)
+
+
+TYPES = ['sar_roughness', 'sar_xspec', 'sar_wave',
+         'sar_wind', 'sar_doppler', 'sar_doppler_exp',
+         'ecmwf_model_wind', 'arome_model_wind',
+         'amsr_sea_ice_conc', 'ascat_sea_ice_roughness',
+         'globcurrent_l4',
+         'eodyn_current',
+         'ww3_model_wave',
+         'odyssea_sst',
+         'ghrsst_oi_mw_sst',
+         'hf_radar',
+         'smos_l4_sss', 'smos_l4_oscar_current', 'smos_l4_ecmwf_sst',
+         'oscar_current',
+         'smosstorm_smos_wind', 'smosstorm_smos_wind_v3', 'smosstorm_smos_wind_v4',
+         'smosstorm_amsr2_wind', 'smosstorm_ascat_wind', 'smosstorm_smap_wind',
+         'modis_sst', 'modis_chlora',
+         'viirs_sst', 'viirs_chlora',
+         'mercator_current',
+         'sentinel2_rgb',
+         'sentinel3_slstr_bt',
+         'sentinel3_slstr_rad',
+         'sentinel3_olci',
+         'duacs_fsle',
+         'duacs_sea_level',
+         'duacs_current',
+         'bathymetry_gebco',
+         'seviri_sst',
+         'along_track_L3',
+         'along_track_L2',
+         'along_track_xtrack',
+         'sentinel3_sral',
+         'ascat_l2b',
+         'smos_l3_locean_sss',
+         'smos_l3_bec_sss',
+         'smap_l3_sss',
+         'aquarius_l3_sss',
+         'smos_l4_locean_sss',
+         'aquarius_l2_sss',
+         ]
+#TYPES2CHECKFIRST = ['sar_doppler_asa']
+
+
+def convert(inp, out, typ, **kwargs):
+    """
+    """
+    if typ == 'sar_roughness':
+        from syntool_converter.sar.sar_roughness import sar_roughness
+        sar_roughness(inp, out, **kwargs)
+    elif typ == 'sar_xspec':
+        from syntool_converter.sar.sar_xspec import sar_xspec
+        sar_xspec(inp, out, **kwargs)
+    elif typ == 'sar_wave':
+        from syntool_converter.sar.sar_wave import sar_wave
+        sar_wave(inp, out, **kwargs)
+    elif typ == 'sar_wind':
+        from syntool_converter.sar.sar_wind import sar_wind
+        sar_wind(inp, out, **kwargs)
+    elif typ == 'sar_doppler':
+        from syntool_converter.sar.sar_doppler import sar_doppler
+        sar_doppler(inp, out, **kwargs)
+    elif typ == 'sar_doppler_exp':
+        from syntool_converter.sar.sar_doppler_exp import sar_doppler_exp
+        sar_doppler_exp(inp, out, **kwargs)
+    elif typ == 'ecmwf_model_wind':
+        from syntool_converter.model_wind.ecmwf_model_wind import ecmwf_model_wind
+        ecmwf_model_wind(inp, out, **kwargs)
+    elif typ == 'arome_model_wind':
+        from syntool_converter.model_wind.arome_model_wind import arome_model_wind
+        arome_model_wind(inp, out, **kwargs)
+    elif typ == 'amsr_sea_ice_conc':
+        from syntool_converter.sea_ice.amsr_sea_ice_conc import amsr_sea_ice_conc
+        amsr_sea_ice_conc(inp, out, **kwargs)
+    elif typ == 'ascat_sea_ice_roughness':
+        from syntool_converter.sea_ice.ascat_sea_ice_roughness import ascat_sea_ice_roughness
+        ascat_sea_ice_roughness(inp, out, **kwargs)
+    elif typ == 'globcurrent_l4':
+        from syntool_converter.current.globcurrent_l4 import globcurrent_l4
+        globcurrent_l4(inp, out, **kwargs)
+    elif typ == 'eodyn_current':
+        from syntool_converter.current.eodyn_current import eodyn_current
+        eodyn_current(inp, out, **kwargs)
+    elif typ == 'ww3_model_wave':
+        from syntool_converter.model_wave.ww3_model_wave import ww3_model_wave
+        ww3_model_wave(inp, out, **kwargs)
+    elif typ == 'odyssea_sst':
+        from syntool_converter.sst.odyssea_sst import odyssea_sst
+        odyssea_sst(inp, out, **kwargs)
+    elif typ == 'ghrsst_oi_mw_sst':
+        from syntool_converter.sst.ghrsst_oi_mw_sst import ghrsst_oi_mw_sst
+        ghrsst_oi_mw_sst(inp, out, **kwargs)
+    elif typ == 'hf_radar':
+        from syntool_converter.current.hf_radar import hf_radar
+        hf_radar(inp, out, **kwargs)
+    elif typ == 'smos_l4_sss':
+        from syntool_converter.smos.smos_l4_sss import smos_l4_sss
+        smos_l4_sss(inp, out, **kwargs)
+    elif typ == 'smos_l4_oscar_current':
+        from syntool_converter.smos.smos_l4_oscar_current import smos_l4_oscar_current
+        smos_l4_oscar_current(inp, out, **kwargs)
+    elif typ == 'smos_l4_ecmwf_sst':
+        from syntool_converter.smos.smos_l4_ecmwf_sst import smos_l4_ecmwf_sst
+        smos_l4_ecmwf_sst(inp, out, **kwargs)
+    elif typ == 'oscar_current':
+        from syntool_converter.current.oscar_current import oscar_current
+        oscar_current(inp, out, **kwargs)
+    elif typ == 'smosstorm_smos_wind':
+        from syntool_converter.smosstorm.smosstorm_smos_wind import smosstorm_smos_wind
+        smosstorm_smos_wind(inp, out, **kwargs)
+    elif typ == 'smosstorm_smos_wind_v3':
+        from syntool_converter.smosstorm.smosstorm_smos_wind_v3 import smosstorm_smos_wind_v3
+        smosstorm_smos_wind_v3(inp, out, **kwargs)
+    elif typ == 'smosstorm_smos_wind_v4':
+        from syntool_converter.smosstorm.smosstorm_smos_wind_v4 import smosstorm_smos_wind_v4
+        smosstorm_smos_wind_v4(inp, out, **kwargs)
+    elif typ == 'smosstorm_amsr2_wind':
+        from syntool_converter.smosstorm.smosstorm_amsr2_wind import smosstorm_amsr2_wind
+        smosstorm_amsr2_wind(inp, out, **kwargs)
+    elif typ == 'smosstorm_ascat_wind':
+        from syntool_converter.smosstorm.smosstorm_ascat_wind import smosstorm_ascat_wind
+        smosstorm_ascat_wind(inp, out, **kwargs)
+    elif typ == 'smosstorm_smap_wind':
+        from syntool_converter.smosstorm.smosstorm_smap_wind import smosstorm_smap_wind
+        smosstorm_smap_wind(inp, out, **kwargs)
+    elif typ == 'modis_sst':
+        from syntool_converter.modis.modis_sst import modis_sst
+        modis_sst(inp, out, **kwargs)
+    elif typ == 'modis_chlora':
+        from syntool_converter.modis.modis_chlora import modis_chlora
+        modis_chlora(inp, out, **kwargs)
+    elif typ == 'viirs_sst':
+        from syntool_converter.viirs.viirs_sst import viirs_sst
+        viirs_sst(inp, out, **kwargs)
+    elif typ == 'viirs_chlora':
+        from syntool_converter.viirs.viirs_chlora import viirs_chlora
+        viirs_chlora(inp, out, **kwargs)
+    elif typ == 'mercator_current':
+        from syntool_converter.current.mercator_current import mercator_current
+        mercator_current(inp, out, **kwargs)
+    elif typ == 'sentinel2_rgb':
+        from syntool_converter.sentinel2.sentinel2_rgb import sentinel2_rgb
+        sentinel2_rgb(inp, out, **kwargs)
+    elif typ == 'sentinel3_slstr_bt':
+        from syntool_converter.sentinel3.sentinel3_slstr_bt import sentinel3_slstr_bt
+        sentinel3_slstr_bt(inp, out, **kwargs)
+    elif typ == 'sentinel3_slstr_rad':
+        from syntool_converter.sentinel3.sentinel3_slstr_rad import sentinel3_slstr_rad
+        sentinel3_slstr_rad(inp, out, **kwargs)
+    elif typ == 'sentinel3_olci':
+        from syntool_converter.sentinel3.sentinel3_olci import sentinel3_olci
+        sentinel3_olci(inp, out, **kwargs)
+    elif typ == 'duacs_fsle':
+        from syntool_converter.duacs.fsle import fsle_gridded
+        fsle_gridded(inp, out, **kwargs)
+    elif typ == 'duacs_sea_level':
+        from syntool_converter.duacs.sea_level import sea_level_gridded
+        sea_level_gridded(inp, out, **kwargs)
+    elif typ ==  'duacs_current':
+        from syntool_converter.duacs.current import current
+        current(inp, out, **kwargs)
+    elif typ == 'bathymetry_gebco':
+        from syntool_converter.bathy.bathymetry_gebco import bathymetry_gebco
+        bathymetry_gebco(inp, out, **kwargs)
+    elif typ == 'seviri_sst':
+        from syntool_converter.sst.ghrsst_seviri import ghrsst_seviri
+        ghrsst_seviri(inp, out, **kwargs)
+    elif typ == 'along_track_L3':
+        from syntool_converter.duacs.read_orbit_L3 import read_orbit
+        read_orbit(inp, out, **kwargs)
+    elif typ == 'along_track_L2':
+        from syntool_converter.duacs.read_orbit_L2 import read_orbit
+        read_orbit(inp, out, **kwargs)
+    elif typ == 'along_track_xtrack':
+        from syntool_converter.duacs.read_xtrack import read_orbit
+        read_orbit(inp, out, **kwargs)
+    elif typ == 'sentinel3_sral':
+        from syntool_converter.sentinel3.sentinel3_sral import read_orbit
+        read_orbit(inp, out, **kwargs)
+    elif typ == 'ascat_l2b':
+        from syntool_converter.scat.ascat_l2b import ascat_l2b
+        ascat_l2b(inp, out, **kwargs)
+    elif typ == 'smos_l3_locean_sss':
+        from syntool_converter.smos.smos_l3_locean_sss import smos_l3_locean_sss
+        smos_l3_locean_sss(inp, out, **kwargs)
+    elif typ == 'smos_l3_bec_sss':
+        from syntool_converter.smos.smos_l3_bec_sss import smos_l3_bec_sss
+        smos_l3_bec_sss(inp, out, **kwargs)
+    elif typ == 'smap_l3_sss':
+        from syntool_converter.smos.smap_l3_sss import smap_l3_sss
+        smap_l3_sss(inp, out, **kwargs)
+    elif typ == 'aquarius_l3_sss':
+        from syntool_converter.smos.aquarius_l3_sss import aquarius_l3_sss
+        aquarius_l3_sss(inp, out, **kwargs)
+    elif typ == 'aquarius_l2_sss':
+        from syntool_converter.smos.aquarius_l2_sss import aquarius_l2_sss
+        aquarius_l2_sss(inp, out, **kwargs)
+    elif typ == 'smos_l4_locean_sss':
+        from syntool_converter.smos.smos_l4_locean_sss import smos_l4_locean_sss
+        smos_l4_locean_sss(inp, out, **kwargs)
+    # elif typ == 'sar_doppler_asa':
+    #     from syntool_converter.sar.sar_doppler_asa import sar_doppler
+    #     sar_doppler(inp, out)
+    else:
+        raise Exception('Unknown type')
+
+
+def parse_listfile(path):
+    """
+    """
+    inputs = []
+    with open(path) as f:
+        for line in f.readlines():
+            if line[0] != '#':
+                inputs.append(line[:-1])
+    return inputs
+
+
+def parse_options(options):
+    """
+    """
+    opt = {}
+    for option in options:
+        [name, value] = option.split('=', 1)
+        if name == 'pngkml':
+            opt['pngkml'] = (value == 'True')
+        elif name == 'contrast':
+            opt['contrast'] = value
+        elif name == 'vmin':
+            if value == 'None':
+                opt['vmin'] = None
+            elif ',' in value:
+                opt['vmin'] = []
+                for v in value.split(','):
+                    if v == 'None':
+                        opt['vmin'].append(None)
+                    elif 0 < len(v.strip()):
+                        opt['vmin'].append(float(v))
+            else:
+                opt['vmin'] = float(value)
+        elif name == 'vmax':
+            if value == 'None':
+                opt['vmax'] = None
+            elif ',' in value:
+                opt['vmax'] = []
+                for v in value.split(','):
+                    if v == 'None':
+                        opt['vmax'].append(None)
+                    elif 0 < len(v.strip()):
+                        opt['vmax'].append(float(v))
+            else:
+                opt['vmax'] = float(value)
+        elif name == 'vmin_pal':
+            opt['vmin_pal'] = float(value)
+        elif name == 'vmax_pal':
+            opt['vmax_pal'] = float(value)
+        elif name == 'landmaskpath':
+            opt['landmaskpath'] = value
+        elif name == 'vmax_re':
+            opt['vmax_re'] = float(value)
+        elif name == 'vmax_im':
+            opt['vmax_im'] = float(value)
+        elif name == 'download_dir':
+            opt['download_dir'] = value
+        elif name == 'ngcps':
+            opt['ngcps'] = tuple([int(v) for v in value.split(',')])
+        elif name == 'nprocs':
+            opt['nprocs'] = int(value)
+        elif name == 'max_forecast_hours':
+            opt['max_forecast_hours'] = float(value)
+        elif name == 'overview_index':
+            if value == 'None':
+                opt['overview_index'] = None
+            else:
+                opt['overview_index'] = int(value)
+        elif name == 'downsampling':
+            opt['downsampling'] = int(value)
+        elif name == 'contrast_overview_index':
+            if value == 'None':
+                opt['contrast_overview_index'] = None
+            else:
+                opt['contrast_overview_index'] = int(value)
+        elif name == 'slope_threshold':
+            opt['slope_threshold'] = float(value)
+        elif name == 'make_histogram':
+            opt['make_histogram'] = (value == 'True')
+        elif name == 'debug_fig_dir':
+            opt['debug_fig_dir'] = value
+        elif name == 'atmos_correction':
+            opt['atmos_correction'] = int(value)
+        elif name == 'atmos_lut_path':
+            opt['atmos_lut_path'] = value
+        elif name == 'vmax_factor':
+            opt['vmax_factor'] = float(value)
+        elif name == 'write_netcdf':
+            opt['write_netcdf'] = (value == 'True')
+        elif name == 'gcp2height':
+            if value == 'None':
+                opt['gcp2height'] = None
+            else:
+                opt['gcp2height'] = float(value)
+        elif name == 'file_range':
+            if value == 'None':
+                opt['file_range'] = None
+            else:
+                opt['file_range'] = value
+        elif name == 'v2':
+            opt['v2'] = (value == 'True')
+        elif name == 'process_var':
+            if ',' in value:
+                opt['process_var'] = []
+                for v in value.split(','):
+                    opt['process_var'].append(v)
+            else:
+                opt['process_var'] = value
+        elif name == 'channels':
+            if ',' in value:
+                opt['channels'] = map(lambda x: x.strip(), value.split(','))
+            else:
+                opt['channels'] = value
+        elif name == 'lut_path':
+            opt['lut_path'] = value
+        elif name == 'log_path':
+            opt['log_path'] = value
+        else:
+            raise Exception('Unknown option.')
+    return opt
+
+
+if __name__ == "__main__":
+    """
+    """
+    descr = 'Convert data to GeoTIFF for Syntool.'
+    parser = argparse.ArgumentParser(description=descr)
+    parser.add_argument('-i', '--input',
+                        required=True,
+                        help='Input path.')
+    parser.add_argument('-o', '--output',
+                        required=True,
+                        help='Output directory.')
+    # --type argument is actually required but it is checked after
+    # because it may be set in options-file
+    parser.add_argument('-t', '--type',
+                        default=None,
+                        choices=TYPES,
+                        help='Data type to convert.')
+    parser.add_argument('-l', '--list',
+                        action='store_true',
+                        default=False,
+                        help='Treat input as a text file which contains a list '
+                        'of input(s).')
+    parser.add_argument('-d', '--date',
+                        default=None,
+                        help='Date for input containing multiple dates '
+                        '(e.g. 20150127T125638)')
+    parser.add_argument('--keep-output',
+                        action='store_true',
+                        default=False,
+                        help='Do not append product name to output directory.')
+    parser.add_argument('-opt', '--option',
+                        default=[],
+                        nargs='*',
+                        help='Conversion option(s) depending on type '
+                        '(format is name=value)')
+    parser.add_argument('--options-file',
+                        default=None,
+                        help='Load syntool-converter options from a file. '
+                        'It applies for --type and --option arguments which '
+                        'are then ignored in the command line.')
+    args = parser.parse_args()
+
+    if args.options_file is not None and os.path.exists(args.options_file):
+        options_str = ''
+        with open(args.options_file, 'r') as f:
+            options_str = f.read()
+            options_str += ' --input {}'.format(args.input)
+            options_str += ' --output {}'.format(args.output)
+            if args.list == True:
+                options_str += ' --list'
+            if args.date is not None:
+                options_str += ' --date {}'.format(args.date)
+            if args.keep_output == True:
+                options_str += ' --keep-output'
+        options_list = shlex.split(options_str)
+        args = parser.parse_args(options_list)
+
+    if args.type is None:
+        raise Exception('argument -t/--type is required')
+
+    if args.list == True:
+        inputs = parse_listfile(args.input)
+    else:
+        inputs = [args.input]
+
+    options = parse_options(args.option)
+
+    if args.date != None:
+        options['date'] = datetime.strptime(args.date, '%Y%m%dT%H%M%S')
+
+    # Dirty, dirty, dirty ...
+    if args.keep_output == True:
+        os.environ['SYNTOOL_CONVERTER_KEEP_OUTPUT'] = '1'
+
+    for inp in inputs:
+        convert(inp, args.output, args.type, **options)

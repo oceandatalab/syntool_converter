@@ -1,0 +1,616 @@
+[
+    {
+        "product": "900913_ECMWF_model_wind",
+        "colorbar": "noaa_wind",
+        "min": 0,
+        "max": 25.7,
+        "variable": "wind speed",
+        "units": "knots",
+        "convert": "toKnots"
+    },
+    {
+        "product": "900913_AMSR_sea_ice_concentration",
+        "colorbar": "sea_ice_conc",
+        "min": 0,
+        "max": 100,
+        "variable": "sea ice concentration",
+        "units": "%",
+        "convert": "identity"
+    },
+    {
+        "product": "900913_SAR_doppler",
+        "colorbar": "doppler",
+        "min": -2.5,
+        "max": 2.5,
+        "variable": "radial horizontal velocities",
+        "units": "knots",
+        "convert": "toKnots"
+    },
+    {
+        "product": "900913_SAR_wind",
+        "colorbar": "noaa_wind",
+        "min": 0,
+        "max": 25.7,
+        "variable": "wind speed",
+        "units": "knots",
+        "convert": "toKnots"
+    },
+    {
+        "product": "900913_WW3_model_wave_hs",
+        "colorbar": "matplotlib_jet",
+        "min": 0,
+        "max": 8,
+        "variable": "wave significant height",
+        "units": "m",
+        "convert": "identity"
+    },
+    {
+        "product": "900913_WW3_model_wave_part0_arrow",
+        "colorbar": "rainbow",
+        "min": 10,
+        "max": 20,
+        "variable": "wave period",
+        "units": "s",
+        "convert": "identity"
+    },
+    {
+        "product": "900913_WW3_model_wave_part1_arrow",
+        "colorbar": "rainbow",
+        "min": 10,
+        "max": 20,
+        "variable": "wave period",
+        "units": "s",
+        "convert": "identity"
+    },
+    {
+        "product": "900913_WW3_model_wave_part2_arrow",
+        "colorbar": "rainbow",
+        "min": 10,
+        "max": 20,
+        "variable": "wave period",
+        "units": "s",
+        "convert": "identity"
+    },
+    {
+        "product": "900913_WW3_model_wave_part3_arrow",
+        "colorbar": "rainbow",
+        "min": 10,
+        "max": 20,
+        "variable": "wave period",
+        "units": "s",
+        "convert": "identity"
+    },
+    {
+        "product": "3857_GlobCurrent_L4_total_hs",
+        "colorbar": "matplotlib_jet",
+        "min": 0,
+        "max": 2,
+        "variable": "current velocity",
+        "units": "m/s",
+        "convert": "identity"
+    },
+    {
+        "product": "3857_GlobCurrent_L4_total_15m",
+        "colorbar": "matplotlib_jet",
+        "min": 0,
+        "max": 2,
+        "variable": "current velocity",
+        "units": "m/s",
+        "convert": "identity"
+    },
+    {
+        "product": "3413_ECMWF_model_wind",
+        "colorbar": "noaa_wind",
+        "min": 0,
+        "max": 25.7,
+        "variable": "wind speed",
+        "units": "knots",
+        "convert": "toKnots"
+    },
+    {
+        "product": "3413_AMSR_sea_ice_concentration",
+        "colorbar": "sea_ice_conc",
+        "min": 0,
+        "max": 100,
+        "variable": "sea ice concentration",
+        "units": "%",
+        "convert": "identity"
+    },
+    {
+        "product": "3413_ASCAT_sea_ice_roughness",
+        "colorbar": "pesket",
+        "min": 0,
+        "max": 0.122409712058,
+        "variable": "sea ice roughness",
+        "units": "",
+        "convert": "identity",
+	"nbins": 7
+    },
+    {
+        "product": "3413_WW3_model_wave_hs",
+        "colorbar": "matplotlib_jet",
+        "min": 0,
+        "max": 10,
+        "variable": "wave significant height",
+        "units": "m",
+        "convert": "identity"
+    },
+    {
+        "product": "3413_WW3_model_wave_part0_arrow",
+        "colorbar": "rainbow",
+        "min": 10,
+        "max": 20,
+        "variable": "wave period",
+        "units": "s",
+        "convert": "identity"
+    },
+    {
+        "product": "3413_WW3_model_wave_part1_arrow",
+        "colorbar": "rainbow",
+        "min": 10,
+        "max": 20,
+        "variable": "wave period",
+        "units": "s",
+        "convert": "identity"
+    },
+    {
+        "product": "3413_WW3_model_wave_part2_arrow",
+        "colorbar": "rainbow",
+        "min": 10,
+        "max": 20,
+        "variable": "wave period",
+        "units": "s",
+        "convert": "identity"
+    },
+    {
+        "product": "3413_WW3_model_wave_part3_arrow",
+        "colorbar": "rainbow",
+        "min": 10,
+        "max": 20,
+        "variable": "wave period",
+        "units": "s",
+        "convert": "identity"
+    },
+    {
+        "product": "3413_WW3_model_wave_hs_v2",
+        "colorbar": "matplotlib_jet",
+        "min": 0,
+        "max": 10,
+        "variable": "wave significant height",
+        "units": "m",
+        "convert": "identity"
+    },
+    {
+        "product": "3413_WW3_model_wave_part0_v2_arrow",
+        "colorbar": "rainbow",
+        "min": 10,
+        "max": 20,
+        "variable": "wave period",
+        "units": "s",
+        "convert": "identity"
+    },
+    {
+        "product": "3413_WW3_model_wave_part1_v2_arrow",
+        "colorbar": "rainbow",
+        "min": 10,
+        "max": 20,
+        "variable": "wave period",
+        "units": "s",
+        "convert": "identity"
+    },
+    {
+        "product": "3413_WW3_model_wave_part2_v2_arrow",
+        "colorbar": "rainbow",
+        "min": 10,
+        "max": 20,
+        "variable": "wave period",
+        "units": "s",
+        "convert": "identity"
+    },
+    {
+        "product": "3413_WW3_model_wave_part3_v2_arrow",
+        "colorbar": "rainbow",
+        "min": 10,
+        "max": 20,
+        "variable": "wave period",
+        "units": "s",
+        "convert": "identity"
+    },
+    {
+        "product": "SAR doppler",
+        "colorbar": "doppler",
+        "min": -2.5,
+        "max": 2.5,
+        "variable": "radial horizontal velocities",
+        "units": "knots",
+        "convert": "toKnots"
+    },
+    {
+        "product": "900913_ODYSSEA_SST",
+        "colorbar": "cerbere_medspiration",
+        "min": 273,
+        "max": 305,
+        "variable": "sea surface temperature",
+        "units": "°C",
+        "convert": "toCelsius"
+    },
+    {
+        "product": "900913_ODYSSEA_SAF_SST",
+        "colorbar": "cerbere_medspiration",
+        "min": 273,
+        "max": 305,
+        "variable": "sea surface temperature",
+        "units": "°C",
+        "convert": "toCelsius"
+    },
+    {
+        "product": "3857_ODYSSEA_MED_SST",
+        "colorbar": "cerbere_medspiration",
+        "min": 273,
+        "max": 305,
+        "variable": "sea surface temperature",
+        "units": "°C",
+        "convert": "toCelsius"
+    },
+    {
+        "product": "3857_ODYSSEA_NWE_SST",
+        "colorbar": "cerbere_medspiration",
+        "min": 273,
+        "max": 305,
+        "variable": "sea surface temperature",
+        "units": "°C",
+        "convert": "toCelsius"
+    },
+    {
+        "product": "3857_ODYSSEA_BRA_SST",
+        "colorbar": "cerbere_medspiration",
+        "min": 273,
+        "max": 305,
+        "variable": "sea surface temperature",
+        "units": "°C",
+        "convert": "toCelsius"
+    },
+    {
+        "product": "900913_SMOS_L4_SSS_raster",
+        "colorbar": "matplotlib_jet",
+        "min": 32,
+        "max": 38,
+        "variable": "sea surface salinity",
+        "units": "PSS",
+        "convert": "identity"
+    },
+    {
+        "product": "900913_SMOSSTORM_SMOS_wind",
+        "colorbar": "matplotlib_jet",
+        "min": 0,
+        "max": 50,
+        "variable": "wind speed",
+        "units": "m/s",
+        "convert": "identity"
+    },
+    {
+        "product": "900913_SMOSSTORM_AMSR2_wind",
+        "colorbar": "matplotlib_jet",
+        "min": 0,
+        "max": 50,
+        "variable": "wind speed",
+        "units": "m/s",
+        "convert": "identity"
+    },
+    {
+        "product": "900913_HF_radar",
+        "colorbar": "matplotlib_jet",
+        "min": 0,
+        "max": 2,
+        "variable": "current velocity",
+        "units": "knots",
+        "convert": "toKnots"
+    },
+    {
+        "product": "900913_Altimeter_SARAL_ALTIKA_SAF_ssha",
+        "colorbar": "gmt_panoply",
+        "min": -1,
+        "max": 1,
+        "variable": "sea surface height anomaly",
+        "units": "m",
+        "convert": "identity"
+    },
+    {
+        "product": "900913_Altimeter_CRYOSAT2_SAF_ssha",
+        "colorbar": "gmt_panoply",
+        "min": -1,
+        "max": 1,
+        "variable": "sea surface height anomaly",
+        "units": "m",
+        "convert": "identity"
+    },
+    {
+        "product": "900913_Altimeter_OSTM_Jason-2_Poseidon-3_SAF_ssha",
+        "colorbar": "gmt_panoply",
+        "min": -1,
+        "max": 1,
+        "variable": "sea surface height anomaly",
+        "units": "m",
+        "convert": "identity"
+    },
+    {
+        "product": "900913_Altimeter_SARAL_ALTIKA_SAF_swh",
+        "colorbar": "gmt_panoply",
+        "min": 0,
+        "max": 10,
+        "variable": "significant wave height",
+        "units": "m",
+        "convert": "identity"
+    },
+    {
+        "product": "900913_Altimeter_CRYOSAT2_SAF_swh_ku",
+        "colorbar": "gmt_panoply",
+        "min": 0,
+        "max": 10,
+        "variable": "significant wave height",
+        "units": "m",
+        "convert": "identity"
+    },
+    {
+        "product": "900913_Altimeter_OSTM_Jason-2_Poseidon-3_SAF_swh_ku",
+        "colorbar": "gmt_panoply",
+        "min": 0,
+        "max": 10,
+        "variable": "significant wave height",
+        "units": "m",
+        "convert": "identity"
+    },
+    {
+        "product": "3857_GlobCurrent_drogue_15m",
+        "colorbar": "matplotlib_jet",
+        "min": 0,
+        "max": 2.5,
+        "variable": "drifter speed",
+        "units": "m/s",
+        "nbins": "5",
+        "convert": "identity"
+    },
+    {
+        "product": "900913_GlobCurrent_ship_track",
+        "colorbar": "yellow_red",
+        "min": 5,
+        "max": 20,
+        "variable": "ship speed",
+        "units": "knots",
+        "convert": "toKnots"
+    },
+    {
+        "product": "3857_Mean_Sea_Level",
+        "colorbar": "matplotlib_jet",
+        "min": -10,
+        "max": 10,
+        "variable": "sea level",
+        "units": "mm/year",
+        "convert": "identity"
+    },
+    {
+        "product": "3857_FSLE",
+        "colorbar": "matplotlib_jet_r",
+        "min": -1,
+        "max": 0,
+        "variable": "FSLE",
+        "units": "1/day",
+        "convert": "identity"
+    },
+    {
+        "product": "3857_Surface_height",
+        "colorbar": "matplotlib_jet",
+        "min": -2,
+        "max": 2,
+        "variable": "ADT",
+        "units": "m",
+        "convert": "identity"
+    },
+    {
+        "product": "3857_Mean_Dynamic_Topography",
+        "colorbar": "matplotlib_jet",
+        "min": -1.5,
+        "max": 1.5,
+        "variable": "MDT",
+        "units": "m",
+        "convert": "identity"
+    },
+    {
+        "product": "3857_Sea_Level_Anomaly",
+        "colorbar": "matplotlib_jet",
+        "min": -0.2,
+        "max": 0.2,
+        "variable": "SLA",
+        "units": "m",
+        "convert": "identity"
+    },
+    {
+        "product": "3857_Saral_GDR",
+        "colorbar": "matplotlib_jet",
+        "min": -0.2,
+        "max": 0.2,
+        "variable": "SSHA",
+        "units": "m",
+        "convert": "identity"
+    },
+    {
+        "product": "3857_barotropic_tidal_height",
+        "colorbar": "matplotlib_jet",
+        "min": -1.5,
+        "max": 1.5,
+        "variable": "Tidal Height",
+        "units": "m",
+        "convert": "identity"
+    },
+    {
+        "product": "3857_Mean_Sea_Surface",
+        "colorbar": "matplotlib_jet",
+        "min": -80,
+        "max": 80,
+        "variable": "MSS",
+        "units": "m",
+        "convert": "identity"
+    },
+    {
+        "product": "3857_Wind",
+        "colorbar": "matplotlib_jet",
+        "min": 0,
+        "max": 20,
+        "variable": "Wind",
+        "units": "m/s",
+        "convert": "identity"
+    },
+    {
+        "product": "3857_Sea_Wave_Height",
+        "colorbar": "matplotlib_jet",
+        "min": 0,
+        "max": 6,
+        "variable": "SWH",
+        "units": "m",
+        "convert": "identity"
+    },
+    {
+        "product": "3857_ARGO_Deep_NATL1000",
+        "colorbar": "yellow_red",
+        "min": 0,
+        "max": 0.35,
+        "variable": "speed",
+        "units": "m/s",
+        "convert": "identity",
+        "nbins": 7
+    },
+    {
+        "product": "3857_ARGO_Deep_NATL1000_temp",
+        "colorbar": "cerbere_medspiration",
+        "min": 3,
+        "max": 12.5,
+        "variable": "Temperature",
+        "units": "°C",
+        "convert": "identity"
+    },
+    {
+        "product": "3857_GEBCO_bathymetry",
+        "colorbar": "ibcso",
+        "min": -6,
+        "max": 0,
+        "variable": "depth",
+        "units": "km",
+        "convert": "identity",
+        "nbins": 7,
+        "discrete": true,
+        "bounds": [-6, -5, -4, -3, -2, -1, -0.5, -0.2, -0.1, -0.05, -0.02]
+    },
+    {
+        "product": "900913_SST_MODIS_denoised",
+        "colorbar": "cerbere_medspiration",
+        "min": 0,
+        "max": 1,
+        "variable": "sea surface temperature",
+        "units": "",
+        "convert": "identity",
+	"relative": true
+    },
+    {
+        "product": "900913_SST_VIIRS_denoised",
+        "colorbar": "cerbere_medspiration",
+        "min": 0,
+        "max": 1,
+        "variable": "sea surface temperature",
+        "units": "",
+        "convert": "identity",
+	"relative": true
+    },
+    {
+        "product": "900913_Chlorophyll_a_concentration_MODIS",
+        "colorbar": "chla_jet",
+        "min": 0,
+        "max": 1,
+        "variable": "chlorophyll concentration",
+        "units": "log scale",
+        "convert": "identity",
+	"relative": true
+    },
+    {
+        "product": "900913_Chlorophyll_a_concentration_VIIRS",
+        "colorbar": "chla_jet",
+        "min": 0,
+        "max": 1,
+        "variable": "chlorophyll concentration",
+        "units": "log scale",
+        "convert": "identity",
+	"relative": true
+    },
+    {
+        "product": "3857_REMSS_MWOI_SST",
+        "colorbar": "cerbere_medspiration",
+        "min": 273,
+        "max": 305,
+        "variable": "sea surface temperature",
+        "units": "°C",
+        "convert": "toCelsius"
+    },
+    {
+        "product": "3857_Saral_GDR_SSHA",
+        "colorbar": "matplotlib_jet",
+        "min": -0.4,
+        "max": 0.4,
+        "variable": "sea surface height anomaly",
+        "units": "m",
+        "convert": "identity"
+    },
+    {
+        "product": "3857_Saral_GDR_SWH",
+        "colorbar": "matplotlib_jet",
+        "min": 0.0,
+        "max": 8.0,
+        "variable": "significant wave height",
+        "units": "m",
+        "convert": "identity"
+    },
+    {
+        "product": "3857_S3_SRAL_1Hz_Sigma0",
+        "colorbar": "matplotlib_jet",
+        "min": 5.0,
+        "max": 25.0,
+        "variable": "sigma0",
+        "units": "dB",
+        "convert": "identity"
+    },
+    {
+        "product": "3857_S3_SRAL_1Hz_Ws",
+        "colorbar": "noaa_wind",
+        "min": 0,
+        "max": 25,
+        "variable": "wind speed",
+        "units": "knots",
+        "convert": "toKnots"
+    },
+    {
+        "product": "SSS_raster",
+        "colorbar": "matplotlib_jet",
+        "min": 32.0,
+        "max": 39.5,
+        "variable": "sea surface salinity",
+        "units": "PSS",
+        "convert": "identity"
+    },
+    {
+        "product": "3857_l4_river_wla",
+        "colorbar": "rainbow",
+        "min": -10,
+        "max": 10,
+        "variable": "Water Level Anomaly",
+        "units": "m",
+        "convert": "identity"
+    },
+    {
+        "product": "brightness_temperature_relative",
+        "colorbar": "cerbere_medspiration",
+        "min": 0,
+        "max": 1,
+        "variable": "brightness temperature",
+        "units": "",
+        "convert": "identity",
+	"relative": true
+    }
+]

@@ -1,0 +1,4 @@
+include *.txt
+include syntool_converter/model_wind/*.nc
+recursive-include syntool_converter/utils/palette *.*
+recursive-include syntool_converter/share *.*

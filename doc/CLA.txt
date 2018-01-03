@@ -1,0 +1,5 @@
+When you make a contribution to the syntool-converter project, you agree:
+ * The code you wrote is your original work (you own the copyright) or you otherwise have the right to submit the work.
+ * To grant the syntool-converter project a nonexclusive, irrevocable license to use your submitted code in any way.
+ * You are capable of granting these rights for the contribution.
+
